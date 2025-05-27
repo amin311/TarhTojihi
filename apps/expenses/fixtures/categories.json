@@ -1,0 +1,66 @@
+[
+    {
+        "model": "expenses.category",
+        "pk": 1,
+        "fields": {
+            "name": "حقوق پرسنل",
+            "description": "هزینه‌های مرتبط با حقوق و دستمزد کارکنان."
+        }
+    },
+    {
+        "model": "expenses.category",
+        "pk": 2,
+        "fields": {
+            "name": "اجاره",
+            "description": "هزینه‌های مربوط به اجاره مکان کسب‌وکار."
+        }
+    },
+    {
+        "model": "expenses.category",
+        "pk": 3,
+        "fields": {
+            "name": "تبلیغات",
+            "description": "هزینه‌های مرتبط با تبلیغات و بازاریابی."
+        }
+    },
+    {
+        "model": "expenses.category",
+        "pk": 4,
+        "fields": {
+            "name": "تجهیزات",
+            "description": "خرید و نگهداری تجهیزات و دستگاه‌های مورد نیاز."
+        }
+    },
+    {
+        "model": "expenses.category",
+        "pk": 5,
+        "fields": {
+            "name": "مواد اولیه",
+            "description": "هزینه‌های مربوط به خرید مواد اولیه برای تولید."
+        }
+    },
+    {
+        "model": "expenses.category",
+        "pk": 6,
+        "fields": {
+            "name": "نرم‌افزار",
+            "description": "خرید و نگهداری نرم‌افزارهای مورد نیاز."
+        }
+    },
+    {
+        "model": "expenses.category",
+        "pk": 7,
+        "fields": {
+            "name": "بیمه",
+            "description": "هزینه‌های بیمه مرتبط با کسب‌وکار."
+        }
+    },
+    {
+        "model": "expenses.category",
+        "pk": 8,
+        "fields": {
+            "name": "حمل و نقل",
+            "description": "هزینه‌های مرتبط با حمل و نقل محصولات و تجهیزات."
+        }
+    }
+]

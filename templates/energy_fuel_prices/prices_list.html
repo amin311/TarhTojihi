@@ -1,0 +1,49 @@
+<!-- templates/energy_fuel_prices/prices_list.html -->
+{% extends "base.html" %}
+{% block title %}تنظیمات قیمت انرژی{% endblock %}
+
+{% block content %}
+<h4 class="mb-4">تنظیمات قیمت سوخت/انرژی</h4>
+
+<table class="table table-striped table-hover align-middle">
+  <thead>
+    <tr>
+      <th>نوع سوخت</th>
+      <th>فصل</th>
+      <th>منطقه</th>
+      <th>نوع کسب‌وکار</th>
+      <th>قیمت پایه</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in prices %}
+    <tr>
+      <td>{{ p.energy_fuel_type.name }}</td>
+      <td>{{ p.get_season_display }}</td>
+      <td>
+        {% if p.region %}
+          {{ p.region.name }}
+        {% else %}
+          <span class="text-muted">—</span>
+        {% endif %}
+      </td>
+      <td>
+        {% if p.business_type %}
+          {{ p.business_type.name }}
+        {% else %}
+          <span class="text-muted">—</span>
+        {% endif %}
+      </td>
+      <td>{{ p.base_price }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- در صورت خالی بودن لیست -->
+{% if prices|length == 0 %}
+<div class="alert alert-warning mt-3">
+  هنوز هیچ تنظیماتی برای قیمت سوخت ثبت نشده است.
+</div>
+{% endif %}
+{% endblock %}

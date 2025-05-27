@@ -1,0 +1,51 @@
+[
+    {
+        "model": "expenses.unit",
+        "pk": 1,
+        "fields": {
+            "name": "تومان"
+        }
+    },
+    {
+        "model": "expenses.unit",
+        "pk": 2,
+        "fields": {
+            "name": "میلیون تومان"
+        }
+    },
+    {
+        "model": "expenses.unit",
+        "pk": 3,
+        "fields": {
+            "name": "میلیارد تومان"
+        }
+    },
+    {
+        "model": "expenses.unit",
+        "pk": 4,
+        "fields": {
+            "name": "عدد"
+        }
+    },
+    {
+        "model": "expenses.unit",
+        "pk": 5,
+        "fields": {
+            "name": "ساعت"
+        }
+    },
+    {
+        "model": "expenses.unit",
+        "pk": 6,
+        "fields": {
+            "name": "%"
+        }
+    },
+    {
+        "model": "expenses.unit",
+        "pk": 7,
+        "fields": {
+            "name": "ضریب"
+        }
+    }
+]

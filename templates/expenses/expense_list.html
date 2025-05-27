@@ -1,0 +1,50 @@
+<!-- templates/expenses/expense_list.html -->
+{% extends "base.html" %}
+{% block title %}فهرست هزینه‌ها{% endblock %}
+
+{% block content %}
+<h3 class="mb-4">فهرست هزینه‌ها</h3>
+
+<table class="table table-hover table-striped align-middle">
+  <thead>
+    <tr>
+      <th>شرح هزینه</th>
+      <th>پروژه</th>
+      <th>دسته‌بندی هزینه</th>
+      <th>مبلغ</th>
+      <th>واحد</th>
+      <th>تاریخ ایجاد</th>
+      <th style="width:120px;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for expense in expenses %}
+    <tr>
+      <td>{{ expense.description }}</td>
+      <td>{{ expense.project.title }}</td>
+      <td>{{ expense.category.name }}</td>
+      <td>{{ expense.amount }}</td>
+      <td>
+        {% if expense.unit %}
+          {{ expense.unit.name }}
+        {% else %}
+          <span class="text-muted">—</span>
+        {% endif %}
+      </td>
+      <td>{{ expense.created_at|date:"Y/m/d H:i" }}</td>
+      <td>
+        <a href="{% url 'expense_detail' expense.pk %}" class="btn btn-info btn-sm">جزئیات</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- در صورت خالی بودن لیست -->
+{% if expenses|length == 0 %}
+<div class="alert alert-warning mt-3">
+  هنوز هیچ هزینه‌ای ثبت نشده است.
+</div>
+{% endif %}
+
+{% endblock %}

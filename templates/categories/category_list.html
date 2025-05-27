@@ -1,0 +1,23 @@
+<!-- templates/categories/category_list.html -->
+{% extends "base.html" %}
+{% block title %}دسته‌بندی‌های کسب‌وکار{% endblock %}
+
+{% block content %}
+<h4 class="mb-4">دسته‌بندی‌های کسب‌وکار</h4>
+
+<ul class="list-group">
+  {% for cat in categories %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <span>{{ cat.name }}</span>
+    <span class="text-muted">{{ cat.description }}</span>
+  </li>
+  {% endfor %}
+</ul>
+
+<!-- در صورت خالی بودن لیست -->
+{% if categories|length == 0 %}
+<div class="alert alert-warning mt-3">
+  هنوز هیچ دسته‌بندی‌ای ایجاد نشده است.
+</div>
+{% endif %}
+{% endblock %}

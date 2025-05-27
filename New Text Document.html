@@ -1,0 +1,168 @@
+import React, { useState } from 'react';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select } from '@/components/ui/select';
+import { Tab, Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { AlertCircle, ChevronDown, Plus, Trash } from 'lucide-react';
+
+const BusinessPlanWizard = () => {
+  const [step, setStep] = useState(1);
+  const [businessType, setBusinessType] = useState('');
+  const [basicInfo, setBasicInfo] = useState({
+    projectName: '',
+    projectDescription: '',
+    location: '',
+    investmentRequired: ''
+  });
+  
+  const [tables, setTables] = useState({
+    equipment: [{ item: '', quantity: '', unitPrice: '', total: 0 }],
+    facilities: [{ item: '', quantity: '', unitPrice: '', total: 0 }],
+    workingCapital: [{ item: '', amount: '' }]
+  });
+
+  const addTableRow = (tableKey) => {
+    setTables(prev => ({
+      ...prev,
+      [tableKey]: [...prev[tableKey], { item: '', quantity: '', unitPrice: '', total: 0 }]
+    }));
+  };
+
+  const removeTableRow = (tableKey, index) => {
+    if (tables[tableKey].length > 1) {
+      setTables(prev => ({
+        ...prev,
+        [tableKey]: prev[tableKey].filter((_, i) => i !== index)
+      }));
+    }
+  };
+
+  const calculateTotal = (row) => {
+    return (parseFloat(row.quantity || 0) * parseFloat(row.unitPrice || 0)).toFixed(2);
+  };
+
+  const updateTableRow = (tableKey, index, field, value) => {
+    setTables(prev => {
+      const newTables = {...prev};
+      newTables[tableKey][index] = {
+        ...newTables[tableKey][index],
+        [field]: value,
+        ...(field === 'quantity' || field === 'unitPrice' ? {
+          total: calculateTotal({
+            ...newTables[tableKey][index],
+            [field]: value
+          })
+        } : {})
+      };
+      return newTables;
+    });
+  };
+
+  return (
+    <div className="w-full max-w-4xl mx-auto p-4 space-y-4">
+      <Card>
+        <CardHeader className="text-2xl font-bold">????? ??? ??????</CardHeader>
+        <CardContent>
+          <Tabs value={`step${step}`} className="w-full">
+            {/* Step 1: Basic Information */}
+            <TabsContent value="step1">
+              <div className="space-y-4">
+                <div>
+                  <Label>??? ??? ? ???</Label>
+                  <Select 
+                    value={businessType}
+                    onValueChange={setBusinessType}
+                    className="w-full"
+                  >
+                    <option value="manufacturing">??????</option>
+                    <option value="service">??????</option>
+                    <option value="retail">???? ?????</option>
+                  </Select>
+                </div>
+                <div>
+                  <Label>??? ?????</Label>
+                  <Input 
+                    value={basicInfo.projectName}
+                    onChange={(e) => setBasicInfo(prev => ({...prev, projectName: e.target.value}))}
+                    className="w-full"
+                  />
+                </div>
+                <Button onClick={() => setStep(2)}>????? ???</Button>
+              </div>
+            </TabsContent>
+
+            {/* Step 2: Financial Tables */}
+            <TabsContent value="step2">
+              <Tabs defaultValue="equipment">
+                <TabsList>
+                  <TabsTrigger value="equipment">???????</TabsTrigger>
+                  <TabsTrigger value="facilities">???????</TabsTrigger>
+                  <TabsTrigger value="workingCapital">?????? ?? ????</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="equipment">
+                  <div className="space-y-4">
+                    {tables.equipment.map((row, index) => (
+                      <div key={index} className="flex gap-2 items-center">
+                        <Input
+                          placeholder="??? ?????"
+                          value={row.item}
+                          onChange={(e) => updateTableRow('equipment', index, 'item', e.target.value)}
+                        />
+                        <Input
+                          type="number"
+                          placeholder="?????"
+                          value={row.quantity}
+                          onChange={(e) => updateTableRow('equipment', index, 'quantity', e.target.value)}
+                        />
+                        <Input
+                          type="number"
+                          placeholder="???? ????"
+                          value={row.unitPrice}
+                          onChange={(e) => updateTableRow('equipment', index, 'unitPrice', e.target.value)}
+                        />
+                        <div className="w-24 text-left">{row.total}</div>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => removeTableRow('equipment', index)}
+                        >
+                          <Trash className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    ))}
+                    <Button onClick={() => addTableRow('equipment')} className="w-full">
+                      <Plus className="mr-2 h-4 w-4" /> ?????? ?????
+                    </Button>
+                  </div>
+                </TabsContent>
+              </Tabs>
+              <div className="mt-4 flex justify-between">
+                <Button onClick={() => setStep(1)}>????? ???</Button>
+                <Button onClick={() => setStep(3)}>????? ???</Button>
+              </div>
+            </TabsContent>
+
+            {/* Step 3: Preview and Download */}
+            <TabsContent value="step3">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">??? ????? ? ??????</h3>
+                <div className="p-4 border rounded">
+                  <h4 className="font-bold">{basicInfo.projectName}</h4>
+                  {/* Preview content */}
+                </div>
+                <Button className="w-full">
+                  ?????? PDF
+                </Button>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+export default BusinessPlanWizard;

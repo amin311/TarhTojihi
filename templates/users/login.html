@@ -1,0 +1,37 @@
+<!-- templates/users/login.html -->
+{% extends "base.html" %}
+{% block title %}ورود به سیستم{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <h2 class="mb-4">ورود به سیستم</h2>
+    <form method="POST" novalidate>
+      {% csrf_token %}
+      <div class="mb-3 position-relative">
+        <label for="username" class="form-label">نام کاربری</label>
+        <i class="fas fa-question-circle text-info position-absolute top-50 end-0 translate-middle-y me-2"
+           data-mdb-toggle="tooltip" title="نام کاربری خود را وارد کنید."></i>
+        <input type="text" class="form-control" id="username" name="username" placeholder="User123" required>
+        {% if form.username.errors %}
+          <div class="text-danger">
+            {{ form.username.errors }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="mb-3 position-relative">
+        <label for="password" class="form-label">رمز عبور</label>
+        <i class="fas fa-question-circle text-info position-absolute top-50 end-0 translate-middle-y me-2"
+           data-mdb-toggle="tooltip" title="رمز عبور خود را وارد کنید."></i>
+        <input type="password" class="form-control" id="password" name="password" placeholder="••••••" required>
+        {% if form.password.errors %}
+          <div class="text-danger">
+            {{ form.password.errors }}
+          </div>
+        {% endif %}
+      </div>
+      <button type="submit" class="btn btn-primary w-100">ورود</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

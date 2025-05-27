@@ -1,0 +1,28 @@
+import React from 'react';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+
+function ExpenseDetail() {
+  return (
+    <Card>
+      <CardHeader>جزئیات هزینه</CardHeader>
+      <CardContent>
+        <h5 class="card-title">شرح هزینه: {{ expense.description }}</h5>
+        <p class="card-text"><strong>پروژه:</strong> {{ expense.project.title }}</p>
+        <p class="card-text"><strong>دسته‌بندی هزینه:</strong> {{ expense.category.name }}</p>
+        <p class="card-text"><strong>مبلغ:</strong> {{ expense.amount }}</p>
+        <p class="card-text"><strong>واحد:</strong>
+          {% if expense.unit %}
+            {{ expense.unit.name }}
+          {% else %}
+            <span class="text-muted">—</span>
+          {% endif %}
+        </p>
+        <p class="card-text"><strong>تاریخ ایجاد:</strong> {{ expense.created_at|date:"Y/m/d H:i" }}</p>
+        <Button variant="secondary">بازگشت</Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+export default ExpenseDetail;

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Plan Wizard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #eaeaea;
+        }
+
+        .tab.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .table th, .table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .table input {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="step1">مرحله ۱</div>
+            <div class="tab" data-tab="step2">مرحله ۲</div>
+            <div class="tab" data-tab="step3">مرحله ۳</div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="tab-content active" id="step1">
+            <div class="input-group">
+                <label for="businessType">نوع کسب و کار</label>
+                <select id="businessType">
+                    <option value="manufacturing">تولیدی</option>
+                    <option value="service">خدماتی</option>
+                    <option value="retail">فروشگاهی</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="projectName">نام پروژه</label>
+                <input type="text" id="projectName">
+            </div>
+            <button onclick="nextStep(2)">ادامه</button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="tab-content" id="step2">
+            <table class="table" id="equipmentTable">
+                <thead>
+                    <tr>
+                        <th>آیتم</th>
+                        <th>تعداد</th>
+                        <th>قیمت واحد</th>
+                        <th>جمع کل</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" placeholder="آیتم"></td>
+                        <td><input type="number" placeholder="تعداد"></td>
+                        <td><input type="number" placeholder="قیمت واحد"></td>
+                        <td>0</td>
+                        <td><button onclick="removeRow(this)">حذف</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="addRow()">افزودن آیتم</button>
+            <div class="actions">
+                <button onclick="nextStep(1)">بازگشت</button>
+                <button onclick="nextStep(3)">ادامه</button>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="tab-content" id="step3">
+            <h3>پیش نمایش</h3>
+            <div id="preview"></div>
+            <button onclick="downloadPDF()">دانلود PDF</button>
+            <div class="actions">
+                <button onclick="nextStep(2)">بازگشت</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.tab, .tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelector(`.tab[data-tab="step${step}"]`).classList.add('active');
+            document.getElementById(`step${step}`).classList.add('active');
+        }
+
+        function addRow() {
+            const table = document.getElementById('equipmentTable').querySelector('tbody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><input type="text" placeholder="آیتم"></td>
+                <td><input type="number" placeholder="تعداد"></td>
+                <td><input type="number" placeholder="قیمت واحد"></td>
+                <td>0</td>
+                <td><button onclick="removeRow(this)">حذف</button></td>
+            `;
+            table.appendChild(row);
+        }
+
+        function removeRow(button) {
+            button.closest('tr').remove();
+        }
+
+        function downloadPDF() {
+            alert('دانلود PDF هنوز پیاده‌سازی نشده است!');
+        }
+    </script>
+</body>
+</html>

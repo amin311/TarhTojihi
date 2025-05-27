@@ -1,0 +1,34 @@
+[
+    {
+        "model": "energy_fuel_prices.region",
+        "pk": 1,
+        "fields": {
+            "name": "تهران",
+            "description": "منطقه تهران و حومه."
+        }
+    },
+    {
+        "model": "energy_fuel_prices.region",
+        "pk": 2,
+        "fields": {
+            "name": "اصفهان",
+            "description": "منطقه اصفهان و حومه."
+        }
+    },
+    {
+        "model": "energy_fuel_prices.region",
+        "pk": 3,
+        "fields": {
+            "name": "شیراز",
+            "description": "منطقه شیراز و حومه."
+        }
+    },
+    {
+        "model": "energy_fuel_prices.region",
+        "pk": 4,
+        "fields": {
+            "name": "مشهد",
+            "description": "منطقه مشهد و حومه."
+        }
+    }
+]

@@ -1,0 +1,66 @@
+[
+    {
+        "model": "projects.businesstype",
+        "pk": 1,
+        "fields": {
+            "name": "تولیدی",
+            "description": "کسب‌وکارهای مرتبط با تولید محصولات فیزیکی."
+        }
+    },
+    {
+        "model": "projects.businesstype",
+        "pk": 2,
+        "fields": {
+            "name": "خدماتی",
+            "description": "کسب‌وکارهای ارائه‌دهنده خدمات به مشتریان."
+        }
+    },
+    {
+        "model": "projects.businesstype",
+        "pk": 3,
+        "fields": {
+            "name": "استارت‌آپ",
+            "description": "شرکت‌های نوپا با مدل کسب‌وکار جدید و نوآورانه."
+        }
+    },
+    {
+        "model": "projects.businesstype",
+        "pk": 4,
+        "fields": {
+            "name": "سرمایه‌گذاری",
+            "description": "پروژه‌های سرمایه‌گذاری در حوزه‌های مختلف مالی."
+        }
+    },
+    {
+        "model": "projects.businesstype",
+        "pk": 5,
+        "fields": {
+            "name": "فنی",
+            "description": "پروژه‌های مرتبط با توسعه و پیاده‌سازی فناوری‌های جدید."
+        }
+    },
+    {
+        "model": "projects.businesstype",
+        "pk": 6,
+        "fields": {
+            "name": "قانونی",
+            "description": "پروژه‌های مرتبط با مسائل حقوقی و مقرراتی."
+        }
+    },
+    {
+        "model": "projects.businesstype",
+        "pk": 7,
+        "fields": {
+            "name": "اقتصادی",
+            "description": "پروژه‌های مرتبط با تحلیل و توسعه اقتصادی."
+        }
+    },
+    {
+        "model": "projects.businesstype",
+        "pk": 8,
+        "fields": {
+            "name": "عملیاتی",
+            "description": "پروژه‌های مرتبط با بهینه‌سازی فرآیندهای عملیاتی."
+        }
+    }
+]

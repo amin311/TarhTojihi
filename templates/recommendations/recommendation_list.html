@@ -1,0 +1,33 @@
+<!-- templates/recommendations/recommendation_list.html -->
+{% extends "base.html" %}
+{% block title %}پیشنهاد طرح‌های مشابه{% endblock %}
+
+{% block content %}
+<h4 class="mb-4">پیشنهادات طرح‌های مشابه برای پروژه: {{ project.title }}</h4>
+
+<div class="row">
+  {% for rec in recs %}
+  <div class="col-md-4">
+    <div class="card mb-4 shadow">
+      <div class="card-body">
+        <h5 class="card-title">امتیاز مشابهت: {{ rec.score }}%</h5>
+        <p class="card-text">طرح‌های مشابه:</p>
+        <ul>
+          {% for sim in rec.similar_projects.all %}
+          <li>{{ sim.title }}</li>
+          {% endfor %}
+        </ul>
+        <a href="{% url 'project_detail' project.pk %}" class="btn btn-primary btn-sm">مشاهده جزئیات</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- در صورت خالی بودن لیست -->
+{% if recs|length == 0 %}
+<div class="alert alert-warning mt-3">
+  هیچ پیشنهادی یافت نشد.
+</div>
+{% endif %}
+{% endblock %}

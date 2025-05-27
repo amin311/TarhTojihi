@@ -1,0 +1,51 @@
+<!-- templates/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}سیستم طرح توجیهی{% endblock %}</title>
+    <!-- MDBootstrap CSS -->
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css"
+        rel="stylesheet"
+    />
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <!-- فایل CSS سفارشی -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body dir="rtl">
+    <!-- Navbar -->
+    {% include "includes/navbar.html" %}
+
+    <!-- محتوای اصلی -->
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    {% include "includes/footer.html" %}
+
+    <!-- MDBootstrap JS -->
+    <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"
+    ></script>
+    <!-- DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.datatable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/fa.json"
+                }
+            });
+        });
+    </script>
+    <!-- فایل JS سفارشی -->
+    <script src="{% static 'js/custom.js' %}"></script>
+    {% block extra_script %}{% endblock %}
+</body>
+</html>

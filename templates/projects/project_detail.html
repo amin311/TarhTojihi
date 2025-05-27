@@ -1,0 +1,48 @@
+import React from 'react';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+
+function ProjectDetail() {
+  return (
+    <Card>
+      <CardHeader>جزئیات پروژه</CardHeader>
+      <CardContent>
+        <h3 className="mb-4">جزئیات پروژه</h3>
+
+        {/* نوار پیشرفت */}
+        <div className="progress mb-4" style={{ height: "25px" }}>
+          <div className="progress-bar" role="progressbar" style={{ width: `${completionPercentage}%` }} aria-valuenow={completionPercentage} aria-valuemin="0" aria-valuemax="100">
+            {completionPercentage}%
+          </div>
+        </div>
+
+        {/* کارت جزئیات پروژه */}
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">عنوان: {{ project.title }}</h5>
+            <p className="card-text"><strong>توضیحات:</strong> {{ project.description }}</p>
+            <p className="card-text"><strong>نوع کسب‌وکار:</strong>
+              {% if project.business_type %}
+                {{ project.business_type.name }}
+              {% else %}
+                <span className="text-muted">بدون دسته‌بندی</span>
+              {% endif %}
+            </p>
+            <p className="card-text"><strong>مالک:</strong>
+              {% if project.owner %}
+                {{ project.owner.username }}
+              {% else %}
+                <span class="text-muted">—</span>
+              {% endif %}
+            </p>
+            <p className="card-text"><strong>تاریخ ایجاد:</strong> {{ project.created_at|date:"Y/m/d H:i" }}</p>
+            <Button>ویرایش پروژه</Button>
+            <Button variant="secondary">بازگشت</Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export default ProjectDetail;

@@ -1,0 +1,46 @@
+[
+    {
+        "model": "energy_fuel_prices.pricesetting",
+        "pk": 1,
+        "fields": {
+            "energy_fuel_type": 1,
+            "season": "SPRING",
+            "region": 1,
+            "business_type": 1,
+            "base_price": "2500000.00"
+        }
+    },
+    {
+        "model": "energy_fuel_prices.pricesetting",
+        "pk": 2,
+        "fields": {
+            "energy_fuel_type": 2,
+            "season": "SUMMER",
+            "region": 2,
+            "business_type": 2,
+            "base_price": "3000000.00"
+        }
+    },
+    {
+        "model": "energy_fuel_prices.pricesetting",
+        "pk": 3,
+        "fields": {
+            "energy_fuel_type": 3,
+            "season": "AUTUMN",
+            "region": 3,
+            "business_type": 3,
+            "base_price": "3500000.00"
+        }
+    },
+    {
+        "model": "energy_fuel_prices.pricesetting",
+        "pk": 4,
+        "fields": {
+            "energy_fuel_type": 4,
+            "season": "WINTER",
+            "region": 4,
+            "business_type": 4,
+            "base_price": "4000000.00"
+        }
+    }
+]

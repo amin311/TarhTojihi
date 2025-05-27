@@ -1,0 +1,34 @@
+[
+    {
+        "model": "energy_fuel_prices.energyfueltype",
+        "pk": 1,
+        "fields": {
+            "name": "بنزین",
+            "description": "سوخت بنزینی برای وسایل نقلیه."
+        }
+    },
+    {
+        "model": "energy_fuel_prices.energyfueltype",
+        "pk": 2,
+        "fields": {
+            "name": "گاز طبیعی",
+            "description": "سوخت گاز طبیعی برای مصارف صنعتی و خانگی."
+        }
+    },
+    {
+        "model": "energy_fuel_prices.energyfueltype",
+        "pk": 3,
+        "fields": {
+            "name": "دیزل",
+            "description": "سوخت دیزلی برای وسایل نقلیه و ماشین‌آلات سنگین."
+        }
+    },
+    {
+        "model": "energy_fuel_prices.energyfueltype",
+        "pk": 4,
+        "fields": {
+            "name": "برق",
+            "description": "منبع انرژی الکتریکی برای مصارف مختلف."
+        }
+    }
+]

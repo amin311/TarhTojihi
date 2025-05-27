@@ -1,0 +1,23 @@
+<!-- templates/energy_fuel_prices/fueltype_list.html -->
+{% extends "base.html" %}
+{% block title %}انواع سوخت و انرژی{% endblock %}
+
+{% block content %}
+<h4 class="mb-4">فهرست انواع سوخت و انرژی</h4>
+
+<ul class="list-group">
+  {% for fuel in fuel_types %}
+  <li class="list-group-item">
+    <strong>{{ fuel.name }}</strong>
+    <br><small class="text-muted">{{ fuel.description }}</small>
+  </li>
+  {% endfor %}
+</ul>
+
+<!-- در صورت خالی بودن لیست -->
+{% if fuel_types|length == 0 %}
+<div class="alert alert-warning mt-3">
+  هنوز هیچ نوع سوختی ثبت نشده است.
+</div>
+{% endif %}
+{% endblock %}

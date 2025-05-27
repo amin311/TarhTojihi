@@ -1,0 +1,21 @@
+import React from 'react';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+
+function ProjectsHome() {
+  return (
+    <Card>
+      <CardHeader>خانه پروژه‌ها</CardHeader>
+      <CardContent>
+        <h2 class="mb-4">به سامانه مدیریت پروژه‌های توجیهی خوش آمدید</h2>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4>پروژه‌های شما</h4>
+          <Button>ایجاد پروژه جدید</Button>
+        </div>
+        <Button variant="info">مشاهده همه پروژه‌ها</Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+export default ProjectsHome;

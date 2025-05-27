@@ -1,0 +1,76 @@
+<!-- templates/projects/create_step2.html -->
+{% extends "base.html" %}
+{% block title %}ایجاد پروژه - گام دوم{% endblock %}
+
+{% block content %}
+<h4 class="mb-4">گام دوم: تعیین نوع کسب‌وکار</h4>
+
+<!-- Stepper -->
+<ul class="stepper stepper-horizontal">
+  <li class="active">
+    <div class="step">
+      <div class="step-icon bg-primary">1</div>
+      <p class="step-title">اطلاعات اولیه</p>
+    </div>
+  </li>
+  <li class="active">
+    <div class="step">
+      <div class="step-icon bg-primary">2</div>
+      <p class="step-title">نوع کسب‌وکار</p>
+    </div>
+  </li>
+  <li>
+    <div class="step">
+      <div class="step-icon bg-secondary">3</div>
+      <p class="step-title">هزینه‌های جاری</p>
+    </div>
+  </li>
+  <!-- سایر مراحل -->
+</ul>
+
+<form method="POST" novalidate class="mt-4">
+  {% csrf_token %}
+  <div class="mb-3 position-relative">
+    <label for="business_type" class="form-label">نوع کسب‌وکار</label>
+    <i class="fas fa-question-circle text-info position-absolute top-50 end-0 translate-middle-y me-2"
+       data-mdb-toggle="tooltip" title="نوع کسب‌وکار پروژه خود را انتخاب کنید."></i>
+    <select name="business_type" id="business_type" class="form-select" required>
+      <option value="" selected disabled>انتخاب کنید...</option>
+      {% for cat in categories %}
+        <option value="{{ cat.id }}">{{ cat.name }}</option>
+      {% endfor %}
+    </select>
+    {% if form.business_type.errors %}
+      <div class="text-danger">
+        {{ form.business_type.errors }}
+      </div>
+    {% endif %}
+  </div>
+  <button type="submit" class="btn btn-primary">ثبت و ادامه</button>
+</form>
+{% endblock %}
+
+import React, { useState } from 'react';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Select } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
+
+function CreateProjectStep2() {
+  const [businessType, setBusinessType] = useState('');
+  return (
+    <Card>
+      <CardHeader>ایجاد پروژه - گام دوم</CardHeader>
+      <CardContent>
+        {/* ...existing stepper replaced... */}
+        <Label>نوع کسب‌وکار</Label>
+        <Select value={businessType} onValueChange={setBusinessType}>
+          {/* ...options replaced... */}
+        </Select>
+        <Button>ثبت و ادامه</Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+export default CreateProjectStep2;

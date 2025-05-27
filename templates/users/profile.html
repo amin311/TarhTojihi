@@ -1,0 +1,21 @@
+<!-- templates/users/profile.html -->
+{% extends "base.html" %}
+{% block title %}پروفایل{% endblock %}
+
+{% block content %}
+<h3 class="mb-4">پروفایل کاربر</h3>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">نام کاربری: {{ user.username }}</h5>
+    <p class="card-text">ایمیل: {{ user.email }}</p>
+    {% if user.profile %}
+      <p class="card-text">نام کامل: {{ user.profile.full_name }}</p>
+      <p class="card-text">شماره تلفن: {{ user.profile.phone_number }}</p>
+      <p class="card-text">آدرس: {{ user.profile.address }}</p>
+    {% else %}
+      <p class="card-text text-muted">اطلاعات پروفایل تکمیل نشده است.</p>
+    {% endif %}
+    <a href="{% url 'users_home' %}" class="btn btn-secondary mt-3">بازگشت</a>
+  </div>
+</div>
+{% endblock %}
