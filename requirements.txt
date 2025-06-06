@@ -1,0 +1,8 @@
+Django>=4.2
+django-jalali>=5.0
+djangorestframework>=3.14
+django-cors-headers>=3.14
+numpy-financial>=1.0
+numpy>=1.26
+WeasyPrint>=62.4
+djangorestframework-simplejwt>=5.3.0 

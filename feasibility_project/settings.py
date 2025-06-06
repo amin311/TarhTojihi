@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'apps.projects',
     'apps.energy_fuel_prices',
     'apps.recommendations',
+    'apps.finance',
 ]
 
 MIDDLEWARE = [
@@ -101,14 +102,20 @@ AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://localhost:5174',
+]
+CORS_ALLOW_CREDENTIALS = False
 
 # پایان فایل settings.py

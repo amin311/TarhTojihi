@@ -1,0 +1,55 @@
+[
+  {
+    "model": "finance.projectfinancialdata",
+    "pk": 1,
+    "fields": {
+      "project": 1,
+      "financial_table": 1,
+      "data": [
+        { "شرح": "سرور فیزیکی", "تعداد": 2, "هزینه واحد (ریال)": 150000000 },
+        { "شرح": "لایسنس نرم‌افزار پایه", "تعداد": 1, "هزینه واحد (ریال)": 50000000 }
+      ],
+      "computed_metrics": null,
+      "created_at": "2024-06-04 10:00:00",
+      "updated_at": "2024-06-04 10:00:00"
+    }
+  },
+  {
+    "model": "finance.projectfinancialdata",
+    "pk": 2,
+    "fields": {
+      "project": 1,
+      "financial_table": 2,
+      "data": [
+        { "شرح هزینه": "حقوق برنامه‌نویس", "هزینه ماهانه (ریال)": 25000000 },
+        { "شرح هزینه": "هزینه اجاره دفتر", "هزینه ماهانه (ریال)": 30000000 }
+      ],
+      "computed_metrics": null,
+      "created_at": "2024-06-04 11:00:00",
+      "updated_at": "2024-06-04 11:00:00"
+    }
+  },
+  {
+    "model": "finance.projectfinancialdata",
+    "pk": 3,
+    "fields": {
+        "project": 1,
+        "financial_table": 4,
+        "data": {
+            "initial_investment": 350000000,
+            "discount_rate": 0.25,
+            "cashflows": [
+                -350000000,
+                80000000,
+                120000000,
+                180000000,
+                250000000,
+                300000000
+            ]
+        },
+        "computed_metrics": null,
+        "created_at": "2024-06-04 12:00:00",
+        "updated_at": "2024-06-04 12:00:00"
+    }
+  }
+] 

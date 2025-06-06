@@ -1,6 +1,26 @@
 {
+  "name": "tarh-tojihi-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "axios": "^1.6.0",
+    "react-router-dom": "^6.21.0",
+    "@tanstack/react-query": "^5.29.0",
+    "chart.js": "^4.4.0",
+    "mathjs": "^12.4.0",
+    "mdb-react-ui-kit": "^7.0.0"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0",
+    "@vitejs/plugin-react": "^4.2.0"
   }
 }

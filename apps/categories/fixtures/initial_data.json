@@ -1,0 +1,129 @@
+[
+  {
+    "model": "categories.category",
+    "pk": 1,
+    "fields": {
+      "name": "فناوری اطلاعات و نرم‌افزار",
+      "description": "پروژه‌های مرتبط با تولید نرم‌افزار، خدمات ابری و زیرساخت IT"
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 2,
+    "fields": {
+      "name": "کشاورزی و صنایع غذایی",
+      "description": "پروژه‌های مرتبط با کشت، دامپروری و فرآوری محصولات غذایی"
+    }
+  },
+  {
+    "model": "categories.unit",
+    "pk": 1,
+    "fields": { "name": "عدد", "symbol": "" }
+  },
+  {
+    "model": "categories.unit",
+    "pk": 2,
+    "fields": { "name": "مترمربع", "symbol": "m²" }
+  },
+  {
+    "model": "categories.unit",
+    "pk": 3,
+    "fields": { "name": "ماه", "symbol": "" }
+  },
+  {
+    "model": "categories.financialtable",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "name": "سرمایه‌گذاری ثابت (CAPEX)",
+      "description": "هزینه‌های اولیه برای راه‌اندازی پروژه"
+    }
+  },
+  {
+    "model": "categories.financialtable",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "name": "هزینه‌های جاری (OPEX)",
+      "description": "هزینه‌های عملیاتی ماهانه یا سالانه"
+    }
+  },
+  {
+    "model": "categories.financialtable",
+    "pk": 3,
+    "fields": {
+      "category": 1,
+      "name": "درآمد فروش",
+      "description": "پیش‌بینی درآمد حاصل از فروش محصولات یا خدمات"
+    }
+  },
+  {
+    "model": "categories.financialtable",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "name": "تحلیل جریان نقدی",
+      "description": "ورودی‌های لازم برای محاسبه شاخص‌های مالی"
+    }
+  },
+  {
+    "model": "categories.financialfield", "pk": 1,
+    "fields": { "financial_table": 1, "name": "شرح", "field_type": "text", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 2,
+    "fields": { "financial_table": 1, "name": "تعداد", "field_type": "numeric", "unit": 1 }
+  },
+  {
+    "model": "categories.financialfield", "pk": 3,
+    "fields": { "financial_table": 1, "name": "هزینه واحد (ریال)", "field_type": "numeric", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 4,
+    "fields": { "financial_table": 2, "name": "شرح هزینه", "field_type": "text", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 5,
+    "fields": { "financial_table": 2, "name": "هزینه ماهانه (ریال)", "field_type": "numeric", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 6,
+    "fields": { "financial_table": 3, "name": "محصول/خدمت", "field_type": "text", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 7,
+    "fields": { "financial_table": 3, "name": "فروش سالانه (تعداد)", "field_type": "numeric", "unit": 1 }
+  },
+  {
+    "model": "categories.financialfield", "pk": 8,
+    "fields": { "financial_table": 3, "name": "قیمت واحد (ریال)", "field_type": "numeric", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 9,
+    "fields": { "financial_table": 4, "name": "سرمایه‌گذاری اولیه (ریال)", "field_type": "numeric", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 10,
+    "fields": { "financial_table": 4, "name": "نرخ تنزیل (درصد)", "field_type": "numeric", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 11,
+    "fields": { "financial_table": 4, "name": "جریان نقدی سال ۱", "field_type": "numeric", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 12,
+    "fields": { "financial_table": 4, "name": "جریان نقدی سال ۲", "field_type": "numeric", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 13,
+    "fields": { "financial_table": 4, "name": "جریان نقدی سال ۳", "field_type": "numeric", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 14,
+    "fields": { "financial_table": 4, "name": "جریان نقدی سال ۴", "field_type": "numeric", "unit": null }
+  },
+  {
+    "model": "categories.financialfield", "pk": 15,
+    "fields": { "financial_table": 4, "name": "جریان نقدی سال ۵", "field_type": "numeric", "unit": null }
+  }
+] 
