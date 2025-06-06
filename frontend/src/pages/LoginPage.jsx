@@ -19,6 +19,9 @@ function LoginPage() {
     try {
       const { data } = await api.post('/auth/token/', credentials);
       login(data.access);
+      if (data.refresh) {
+        localStorage.setItem('refresh', data.refresh);
+      }
       navigate('/projects');
     } catch (err) {
       setError('نام کاربری یا رمز عبور اشتباه است');

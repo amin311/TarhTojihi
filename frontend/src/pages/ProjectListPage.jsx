@@ -16,7 +16,10 @@ function ProjectListPage() {
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">پروژه‌ها</h2>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2>پروژه‌ها</h2>
+        <Link to="/projects/new" className="btn btn-primary">پروژه جدید</Link>
+      </div>
       <ul className="list-group">
         {projects.map((p) => (
           <li key={p.id} className="list-group-item d-flex justify-content-between align-items-center">

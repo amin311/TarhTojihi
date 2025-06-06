@@ -16,8 +16,13 @@ export function AuthProvider({ children }) {
     }
   }, [token]);
 
-  const login = (jwt) => setToken(jwt);
-  const logout = () => setToken(null);
+  const login = (jwt) => {
+    setToken(jwt);
+  };
+  const logout = () => {
+    setToken(null);
+    localStorage.removeItem('refresh');
+  };
 
   return (
     <AuthContext.Provider value={{ token, login, logout }}>

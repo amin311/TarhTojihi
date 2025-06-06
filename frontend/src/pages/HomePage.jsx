@@ -7,7 +7,7 @@ function HomePage() {
       <header className="py-5 text-center bg-primary text-white">
         <h1 className="display-5 fw-bold">سامانه طرح توجیهی آنلاین</h1>
         <p className="lead">به‌سادگی طرح توجیهی خود را بسازید، محاسبات مالی را آنی ببینید و گزارش PDF بگیرید.</p>
-        <Link to="/projects" className="btn btn-lg btn-light mt-3">
+        <Link to="/projects/new" className="btn btn-lg btn-light mt-3">
           شروع کنید
         </Link>
       </header>

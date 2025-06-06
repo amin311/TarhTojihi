@@ -16,11 +16,11 @@ class UnitSerializer(serializers.ModelSerializer):
 class FinancialFieldSerializer(serializers.ModelSerializer):
     class Meta:
         model = FinancialField
-        fields = ['id', 'name', 'field_type', 'unit']
+        fields = ['id', 'name', 'field_type', 'unit', 'order']
 
 class FinancialTableSerializer(serializers.ModelSerializer):
     fields = FinancialFieldSerializer(many=True, read_only=True)
 
     class Meta:
         model = FinancialTable
-        fields = ['id', 'name', 'description', 'category', 'fields']
+        fields = ['id', 'name', 'description', 'category', 'section', 'table_type', 'fields']

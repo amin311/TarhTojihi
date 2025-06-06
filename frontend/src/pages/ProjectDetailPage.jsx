@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import api from '@/api/axios';
 import FinancialWizard from '@/components/FinancialWizard';
+import FinanceBoard from '@/components/FinanceBoard';
 
 function ProjectDetailPage() {
   const { id } = useParams();
@@ -54,7 +55,7 @@ function ProjectDetailPage() {
       <p>{project.description}</p>
 
       <h4 className="mt-5 mb-3">ورود داده‌های مالی</h4>
-      <FinancialWizard projectId={id} />
+      <FinanceBoard projectId={id} categoryId={project.business_type} />
     </div>
   );
 }

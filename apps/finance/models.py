@@ -66,4 +66,36 @@ class FinanceSnapshot(models.Model):
         verbose_name_plural = 'عکس‌فوری‌های مالی'
 
     def __str__(self):
-        return f"{self.project.title} - {self.created_at}" 
+        return f"{self.project.title} - {self.created_at}"
+
+
+class FinancialFormula(models.Model):
+    """فرمول‌های محاسباتی پویا که می‌توانند در سطح جدول، فصل یا کل پروژه اعمال شوند."""
+
+    LEVEL_CHOICES = (
+        ('row', 'سطح ردیف'),
+        ('table', 'سطح جدول'),
+        ('section', 'سطح فصل'),
+        ('project', 'کل طرح'),
+    )
+
+    financial_table = models.ForeignKey(
+        FinancialTable,
+        on_delete=models.CASCADE,
+        related_name='formulas',
+        verbose_name='جدول مالی',
+        null=True,
+        blank=True,
+    )
+    level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default='table', verbose_name='سطح')
+    result_key = models.CharField(max_length=100, verbose_name='کلید نتیجه')
+    expression = models.TextField(verbose_name='عبارت فرمول')
+
+    class Meta:
+        verbose_name = 'فرمول مالی'
+        verbose_name_plural = 'فرمول‌های مالی'
+        unique_together = ('financial_table', 'result_key', 'level')
+
+    def __str__(self):
+        tbl = self.financial_table.name if self.financial_table else 'Global'
+        return f"{tbl} - {self.result_key} ({self.level})" 

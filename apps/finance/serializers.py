@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ProjectFinancialData, FinanceSnapshot
+from .models import ProjectFinancialData, FinanceSnapshot, FinancialFormula
 
 
 class ProjectFinancialDataSerializer(serializers.ModelSerializer):
@@ -13,4 +13,10 @@ class ProjectFinancialDataSerializer(serializers.ModelSerializer):
 class FinanceSnapshotSerializer(serializers.ModelSerializer):
     class Meta:
         model = FinanceSnapshot
+        fields = '__all__'
+
+
+class FinancialFormulaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FinancialFormula
         fields = '__all__' 

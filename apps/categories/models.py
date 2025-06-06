@@ -36,9 +36,22 @@ class FinancialTable(models.Model):
     """
     جداول مالی مرتبط با هر دسته‌بندی، مانند هزینه‌های جاری، استهلاک و ...
     """
+    SECTION_CHOICES = (
+        ('capex', 'سرمایه‌گذاری ثابت'),
+        ('opex', 'هزینه‌های متغیر'),
+        ('revenue', 'درآمد/فروش'),
+        ('analysis', 'تحلیل و شاخص‌ها'),
+    )
+    TABLE_TYPE_CHOICES = (
+        ('grid', 'جدولی'),
+        ('text', 'متنی'),
+        ('auto', 'خودکار'),
+    )
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='financial_tables', verbose_name='دسته‌بندی')
     name = models.CharField(verbose_name='نام', max_length=100)
     description = models.TextField(verbose_name='توضیحات', blank=True, null=True)
+    section = models.CharField(max_length=20, choices=SECTION_CHOICES, default='capex', verbose_name='فصل')
+    table_type = models.CharField(max_length=10, choices=TABLE_TYPE_CHOICES, default='grid', verbose_name='نوع جدول')
 
     def __str__(self):
         return f"{self.category.name} - {self.name}"
@@ -48,6 +61,7 @@ class FinancialField(models.Model):
     """
     فیلدهای مختلف (ستون‌ها) در هر جدول مالی.
     """
+    order = models.PositiveIntegerField(verbose_name='ترتیب', default=0)
     FIELD_TYPE_CHOICES = (
         ('numeric', 'عدد'),
         ('text', 'متن'),
@@ -59,3 +73,6 @@ class FinancialField(models.Model):
 
     def __str__(self):
         return f"{self.financial_table.name} - {self.name}"
+
+    class Meta:
+        ordering = ['order', 'id']  # نمایش به ترتیب تعریف‌شده

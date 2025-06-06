@@ -111,7 +111,8 @@ REST_FRAMEWORK = {
     ],
 }
 
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = True  # توسعه محلی: اجازه همه Origin‌ها
+# در صورت نیاز به محدودیت، از CORS_ALLOWED_ORIGINS استفاده کنید
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://localhost:5174',
